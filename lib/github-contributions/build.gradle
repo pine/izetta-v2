@@ -1,0 +1,7 @@
+dependencies {
+    // Spring Framework
+    compileOnly 'org.springframework:spring-web'
+
+    // Utilities
+    implementation 'org.jsoup:jsoup'
+}

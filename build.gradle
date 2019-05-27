@@ -61,6 +61,7 @@ subprojects {
 
             // Utilities
             dependency "org.projectlombok:lombok:$lombokVersion"
+            dependency 'org.jsoup:jsoup:1.12.1'
 
             // Test
             dependency 'junit:junit:4.12'

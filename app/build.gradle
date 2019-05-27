@@ -6,8 +6,9 @@ configurations {
 
 dependencies {
     // Sub-projects
-    project(':lib-github-search')
-    project(':lib-github-stats')
+    implementation project(':lib-github-contributions')
+    implementation project(':lib-github-search')
+    implementation project(':lib-slack')
 
     // Spring Framework
     implementation 'org.springframework.boot:spring-boot-starter-web'
