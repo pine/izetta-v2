@@ -1,0 +1,22 @@
+apply plugin: 'org.springframework.boot'
+
+configurations {
+    implementation.exclude module: 'spring-boot-starter-tomcat'
+}
+
+dependencies {
+    // Sub-projects
+
+    // Spring Framework
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    implementation 'org.springframework.retry:spring-retry'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Servlet
+    implementation 'javax.validation:validation-api'
+    compileOnly 'javax.servlet:javax.servlet-api'
+}
+
+compileJava.dependsOn(processResources)

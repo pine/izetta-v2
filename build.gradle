@@ -1,0 +1,93 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.4.RELEASE'
+        lombokVersion = '1.18.6'
+    }
+    repositories {
+        jcenter()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE'
+        classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
+        classpath 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.6.11'
+        classpath 'net.rdrei.android.buildtimetracker:gradle-plugin:0.11.0'
+    }
+}
+
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-maven'
+    apply plugin: 'propdeps-idea'
+
+    group 'moe.pine.izetta'
+
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+
+    repositories {
+        jcenter()
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+        options.compilerArgs << '-Xlint:unchecked'
+        options.compilerArgs << '-Xlint:deprecation'
+    }
+}
+
+subprojects {
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+        }
+        dependencies {
+            dependency 'javax.servlet:javax.servlet-api:4.0.1'
+
+            // Guava
+            dependency 'com.google.guava:guava:27.0.1-jre'
+
+            // Apache Commons
+            dependency 'commons-codec:commons-codec:1.11'
+            dependency 'org.apache.commons:commons-lang3:3.8.1'
+            dependency 'org.apache.commons:commons-collections4:4.3'
+
+            // Utilities
+            dependency "org.projectlombok:lombok:$lombokVersion"
+
+            // Test
+            dependency 'junit:junit:4.12'
+            dependency 'org.mockito:mockito-core:2.24.5'
+            dependency 'org.powermock:powermock-reflect:2.0.0'
+        }
+    }
+    dependencies {
+        // Lombok
+        annotationProcessor 'org.projectlombok:lombok'
+        compileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+
+        // Logging
+        implementation 'org.slf4j:slf4j-api'
+        implementation 'ch.qos.logback:logback-classic'
+
+        // Utilities
+        implementation 'com.google.guava:guava'
+        implementation 'org.apache.commons:commons-lang3'
+        implementation 'org.apache.commons:commons-collections4'
+
+        // Test
+        testImplementation 'junit:junit'
+        testImplementation 'org.mockito:mockito-core'
+        testImplementation 'org.powermock:powermock-reflect'
+    }
+}
+
