@@ -1,1 +1,7 @@
 include ':app'
+
+include ':lib-github-search'
+project(':lib-github-search').projectDir = new File(settingsDir, 'lib/github-search')
+
+include ':lib-github-stats'
+project(':lib-github-stats').projectDir = new File(settingsDir, 'lib/github-stats')
