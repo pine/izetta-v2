@@ -20,6 +20,9 @@ dependencies {
     // Servlet
     implementation 'javax.validation:validation-api'
     compileOnly 'javax.servlet:javax.servlet-api'
+
+    // Utilities
+    implementation 'moe.pine:github-contribution-stats'
 }
 
 compileJava.dependsOn(processResources)

@@ -1,7 +1,8 @@
 dependencies {
     // Spring Framework
-    compileOnly 'org.springframework:spring-web'
+    implementation 'org.springframework.retry:spring-retry'
 
     // Utilities
     implementation 'org.jsoup:jsoup'
+    implementation 'moe.pine:github-contribution-stats'
 }

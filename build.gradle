@@ -50,6 +50,7 @@ subprojects {
         }
         dependencies {
             dependency 'javax.servlet:javax.servlet-api:4.0.1'
+            dependency 'moe.pine:github-contribution-stats:0.1.0'
 
             // Guava
             dependency 'com.google.guava:guava:27.0.1-jre'
