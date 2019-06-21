@@ -5,8 +5,6 @@ import moe.pine.izetta.github.contributions.GitHubContributions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.Nonnull;
-
 @Configuration
 public class GitHubContributionsConfig {
     private static final int MAX_ATTEMPTS = 5;
@@ -18,7 +16,7 @@ public class GitHubContributionsConfig {
 
     @Bean
     public GitHubContributions githubContributions(
-        @Nonnull final ContributionStatsClient contributionStatsClient
+        final ContributionStatsClient contributionStatsClient
     ) {
         return new GitHubContributions(contributionStatsClient, MAX_ATTEMPTS);
     }
