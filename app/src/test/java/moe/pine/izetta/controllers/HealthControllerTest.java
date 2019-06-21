@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -60,9 +60,6 @@ public class HealthControllerTest {
     public void healthTest() {
         mvc.perform(MockMvcRequestBuilders.get("/health"))
             .andExpect(status().isOk())
-            .andExpect(header().string("Pragma", "no-cache"))
-            .andExpect(header()
-                .string("Cache-Control", "private, no-cache, no-store, must-revalidate"))
-            .andExpect(content().string("OK"));
+            .andExpect(content().string(containsString("OK")));
     }
 }

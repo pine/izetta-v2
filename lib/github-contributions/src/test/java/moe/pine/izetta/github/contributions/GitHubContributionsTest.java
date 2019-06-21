@@ -23,6 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
+@SuppressWarnings("NullableProblems")
 public class GitHubContributionsTest {
     private static final int MAX_ATTEMPTS = 3;
 
