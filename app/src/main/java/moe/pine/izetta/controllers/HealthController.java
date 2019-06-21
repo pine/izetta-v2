@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import moe.pine.izetta.properties.AppProperties;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +33,7 @@ public class HealthController {
 
     @GetMapping("health")
     @ResponseBody
-    public String health(HttpServletResponse response) {
-        response.addHeader(HttpHeaders.PRAGMA, "no-cache");
-        response.addHeader(
-            HttpHeaders.CACHE_CONTROL, "private, no-cache, no-store, must-revalidate");
+    public String health() {
         return "OK";
     }
 }

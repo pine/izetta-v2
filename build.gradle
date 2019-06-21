@@ -65,6 +65,10 @@ subprojects {
             dependency "org.projectlombok:lombok:$lombokVersion"
             dependency 'org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.3.0.201903130848-r'
 
+            // My libraries
+            dependency 'moe.pine:github-contribution-stats:0.1.0'
+            dependency 'moe.pine:spring-cache-interceptors:0.1.1'
+
             // Test
             dependency 'junit:junit:4.12'
             dependency 'org.mockito:mockito-core:2.24.5'

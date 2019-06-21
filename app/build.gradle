@@ -23,6 +23,7 @@ dependencies {
 
     // Utilities
     implementation 'moe.pine:github-contribution-stats'
+    implementation 'moe.pine:spring-cache-interceptors'
 }
 
 compileJava.dependsOn(processResources)
