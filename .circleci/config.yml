@@ -12,6 +12,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Git
+          command: |
+            apt-get update -qq
+            apt-get install -y -qq --no-install-recommends git
+      - run:
           name: Checkout submodule
           command: |
             git submodule update --init
