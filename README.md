@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- JDK 11
+- JDK 11 or later
 
 ## Libraries
 
@@ -39,6 +39,10 @@ $ ./gradlew build
 $ heroku plugins:install java
 $ heroku deploy:jar --jar app/build/libs/app.jar --jdk 11
 ```
+
+## See also
+
+- [izetta-obsolete](https://github.com/pine/izetta-obsolete) Old version
 
 ## License
 MIT &copy; [Pine Mizune](https://profile.pine.moe/)
