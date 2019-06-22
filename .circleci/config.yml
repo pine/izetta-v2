@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: adoptopenjdk:11-jdk-hotspot
+      - image: circleci/openjdk:11.0.2-jdk
       - image: redis
     working_directory: ~/repo
     environment:
@@ -11,11 +11,6 @@ jobs:
       YARN_SILENT: 1
     steps:
       - checkout
-      - run:
-          name: Install Git
-          command: |
-            apt-get update -qq
-            apt-get install -y -qq --no-install-recommends git
       - run:
           name: Checkout submodule
           command: |
