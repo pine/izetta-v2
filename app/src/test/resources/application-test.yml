@@ -1,2 +1,5 @@
+scheduling:
+  enabled: false
+
 app:
   site-url: https://github.com/pine/izetta
