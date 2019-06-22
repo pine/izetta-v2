@@ -12,12 +12,12 @@ import java.time.LocalDate;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class NotifyService {
+public class ContributionService {
     private final Clock clock;
     private final GitHubProperties gitHubProperties;
     private final GitHubContributions githubContributions;
 
-    public void run() {
+    public int getContribution() {
         final String username = gitHubProperties.getUsername();
         final LocalDate dt = LocalDate.now(clock);
         final var contributions = githubContributions.collect(username);
@@ -29,9 +29,6 @@ public class NotifyService {
                     dt, username, contributions));
         }
 
-        final int contribution = contributions.get(dt);
-        if (contribution > 0) return; // Already committed
-
-
+        return contributions.get(dt);
     }
 }

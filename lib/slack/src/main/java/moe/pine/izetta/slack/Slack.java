@@ -1,7 +1,7 @@
 package moe.pine.izetta.slack;
 
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -11,12 +11,15 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
 
-@RequiredArgsConstructor
 public class Slack {
     @SuppressWarnings("WeakerAccess")
     public static final String SLACK_CHAT_POST_MESSAGE = "https://slack.com/api/chat.postMessage";
 
     private final RestTemplate restTemplate;
+
+    public Slack(final RestTemplateBuilder restTemplateBuilder) {
+        restTemplate = restTemplateBuilder.build();
+    }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void postMessage(final Message message) {
