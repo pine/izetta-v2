@@ -1,0 +1,3 @@
+[submodule "conf"]
+	path = conf
+	url = git@github.com:pine/izetta-conf.git
