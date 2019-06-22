@@ -3,3 +3,6 @@
 out/
 build/
 *.iml
+
+/app/src/main/resources/application-prod.yml
+/app/src/main/resources/application-local.yml
