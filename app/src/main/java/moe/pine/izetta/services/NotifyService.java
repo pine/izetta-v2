@@ -3,6 +3,7 @@ package moe.pine.izetta.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import moe.pine.izetta.github.contributions.GitHubContributions;
+import moe.pine.izetta.properties.GitHubProperties;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
@@ -13,10 +14,11 @@ import java.time.LocalDate;
 @Slf4j
 public class NotifyService {
     private final Clock clock;
+    private final GitHubProperties gitHubProperties;
     private final GitHubContributions githubContributions;
 
     public void run() {
-        final String username = "";
+        final String username = gitHubProperties.getUsername();
         final LocalDate dt = LocalDate.now(clock);
         final var contributions = githubContributions.collect(username);
 
