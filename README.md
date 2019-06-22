@@ -36,7 +36,7 @@ $ heroku config:set TZ=Asia/Tokyo
 $ heroku config:set 'JAVA_OPTS=-XX:+UseStringDeduplication'
 
 # Deploy JAR file
-$ ./gradlew build
+$ ./gradlew clean :app:bootJar
 $ heroku plugins:install java
 $ heroku deploy:jar --jar app/build/libs/app.jar --jdk 11
 ```
