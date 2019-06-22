@@ -1,5 +1,6 @@
 # izetta
 [![CircleCI](https://circleci.com/gh/pine/izetta/tree/master.svg?style=shield)](https://circleci.com/gh/pine/izetta/tree/master)
+[![codecov](https://codecov.io/gh/pine/izetta/branch/master/graph/badge.svg?token=r3m97vkYGJ)](https://codecov.io/gh/pine/izetta)
 
 ## Requirements
 
