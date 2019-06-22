@@ -29,6 +29,14 @@ public class ContributionService {
                     dt, username, contributions));
         }
 
-        return contributions.get(dt);
+        final int contribution = contributions.get(dt);
+        if (contribution < 0) {
+            throw new RuntimeException(
+                String.format(
+                    "Illegal contribution value :: contribution=%s",
+                    contribution));
+        }
+
+        return contribution;
     }
 }
