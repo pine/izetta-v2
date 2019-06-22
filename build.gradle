@@ -40,6 +40,15 @@ allprojects {
         options.compilerArgs << '-Xlint:unchecked'
         options.compilerArgs << '-Xlint:deprecation'
     }
+
+
+    // ----- JaCoCo ---------------------------------------
+
+    apply plugin: 'jacoco'
+
+    jacoco {
+        toolVersion = '0.8.3'
+    }
 }
 
 subprojects {
@@ -98,3 +107,25 @@ subprojects {
     }
 }
 
+
+// ----- JaCoCo -------------------------------------------
+
+task jacocoMerge(type: JacocoMerge) {
+    dependsOn(subprojects.jacocoTestReport.dependsOn)
+    mustRunAfter(subprojects.jacocoTestReport.mustRunAfter)
+    destinationFile = file("${buildDir}/jacoco/test.exec")
+    executionData = files(subprojects.jacocoTestReport.executionData)
+        .filter { f -> f.exists() }
+}
+
+jacocoTestReport {
+    dependsOn(jacocoMerge)
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    additionalSourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs)
+    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+    classDirectories = files(subprojects.sourceSets.main.output)
+}
