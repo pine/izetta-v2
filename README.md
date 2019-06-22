@@ -1,4 +1,5 @@
 # izetta
+[![CircleCI](https://circleci.com/gh/pine/izetta/tree/master.svg?style=shield)](https://circleci.com/gh/pine/izetta/tree/master)
 
 ## Requirements
 
