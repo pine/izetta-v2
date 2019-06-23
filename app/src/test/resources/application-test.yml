@@ -3,3 +3,11 @@ scheduling:
 
 app:
   site-url: https://github.com/pine/izetta
+
+github:
+  username: username
+
+slack:
+  token: xxxx-0000000000-0000000000-7777777777-cccccc
+  channel: 'alert'
+  text: 'text'
