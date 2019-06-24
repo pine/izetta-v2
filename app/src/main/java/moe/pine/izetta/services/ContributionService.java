@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Clock;
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +23,14 @@ public class ContributionService {
         final LocalDate dt = LocalDate.now(clock);
         final var contributions = githubContributions.collect(username);
 
-        final int contribution =
-            Objects.requireNonNullElse(contributions.get(dt), 0);
+        final Optional<Integer> contributionOpt =
+            Optional.ofNullable(contributions.get(dt));
+
+        log.debug(
+            "Contribution collected :: username={}, dt={}, contribution={}",
+            username, dt, contributionOpt);
+
+        final int contribution = contributionOpt.orElse(0);
         if (contribution < 0) {
             throw new RuntimeException(
                 String.format(

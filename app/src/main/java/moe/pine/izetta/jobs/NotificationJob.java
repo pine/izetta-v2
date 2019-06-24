@@ -22,8 +22,6 @@ public class NotificationJob {
     @Retryable
     public void run() {
         final int contribution = contributionService.getContribution();
-        log.debug("contribution={}", contribution);
-
         if (contribution == 0) {
             slackService.notifyAlert();
         }
