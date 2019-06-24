@@ -18,6 +18,7 @@ public class NotificationJob {
 
     @ConditionalOnProperty(value = "scheduling.enabled", havingValue = "true")
     @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "30 * * * * *")
     @Retryable
     public void run() {
         final int contribution = contributionService.getContribution();
