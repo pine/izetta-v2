@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Clock;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -22,14 +23,8 @@ public class ContributionService {
         final LocalDate dt = LocalDate.now(clock);
         final var contributions = githubContributions.collect(username);
 
-        if (!contributions.containsKey(dt)) {
-            throw new RuntimeException(
-                String.format(
-                    "The contribution is not found :: dt=%s, username=%s, contributions=%s",
-                    dt, username, contributions));
-        }
-
-        final int contribution = contributions.get(dt);
+        final int contribution =
+            Objects.requireNonNullElse(contributions.get(dt), 0);
         if (contribution < 0) {
             throw new RuntimeException(
                 String.format(
