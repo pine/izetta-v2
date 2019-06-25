@@ -16,11 +16,11 @@ public class NotificationJob {
     private final ContributionService contributionService;
     private final SlackService slackService;
 
-    @ConditionalOnProperty(value = "scheduling.enabled", havingValue = "true")
+    @Retryable
     @Scheduled(cron = "0  0 22 * * *")
     @Scheduled(cron = "0  0 23 * * *")
     @Scheduled(cron = "0 30 23 * * *")
-    @Retryable
+    @ConditionalOnProperty(value = "scheduling.enabled", havingValue = "true")
     public void run() {
         final int contribution = contributionService.getContribution();
         if (contribution == 0) {
