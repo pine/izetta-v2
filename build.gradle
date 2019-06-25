@@ -76,7 +76,7 @@ subprojects {
 
             // My libraries
             dependency 'moe.pine:github-contribution-stats:0.1.1'
-            dependency 'moe.pine:spring-cache-interceptors:0.1.1'
+            dependency 'moe.pine:spring-cache-interceptors:0.1.2'
 
             // Test
             dependency 'junit:junit:4.12'
