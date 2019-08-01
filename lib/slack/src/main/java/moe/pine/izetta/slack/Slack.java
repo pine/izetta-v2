@@ -21,7 +21,6 @@ public class Slack {
         restTemplate = restTemplateBuilder.build();
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void postMessage(final Message message) {
         Objects.requireNonNull(message);
 
