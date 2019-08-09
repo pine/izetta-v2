@@ -11,7 +11,7 @@ public class GitHubContributionsConfig {
 
     @Bean
     public ContributionStatsClient contributionStatsClient() {
-        return new ContributionStatsClient();
+        return ContributionStatsClient.create();
     }
 
     @Bean
