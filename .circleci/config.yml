@@ -17,8 +17,8 @@ jobs:
             git submodule update --init
       - restore_cache:
           keys:
-            - v2-dependencies-{{ checksum "build.gradle" }}
-            - v2-dependencies-
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
       - run:
           name: Test
           command: |
